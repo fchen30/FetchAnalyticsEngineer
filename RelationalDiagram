@@ -1,0 +1,78 @@
++----------------------+
+|        users         |
++----------------------+
+| users_id (PK)        |
+| active               |
+| createdDate          |
+| lastLogin            |
+| role                 |
+| signUpSource         |
+| state                |
++----------------------+
+          |
+          | (user_id) 1 : N
+          v
++----------------------+
+|       receipts       |
++----------------------+
+| receipt_id (PK)      |
+| user_id (FK)         |
+| bonus_points_earned  |
+| bonus_points_reason  |
+| create_date          |
+| date_scanned         |
+| finished_date        |
+| modify_date          |
+| points_awarded_date  |
+| points_earned        |
+| purchase_date        |
+| purchased_item_count |
+| rewards_receipt_status|
+| total_spent          |
++----------------------+
+          |
+          | (receipt_id) 1: N
+          v
++----------------------+
+|    receipt_items     |
++----------------------+
+| item_id (PK)         |
+| receipt_id (FK)      |
+| barcode              |-----------------
+| brandcode            |                |
+| description          |                |
+| final_price          |                |
+| item_price           |                |
+| needs_fetch_review   |                |
+| partner_item_id      |                |
+| prevent_target_gap_points|            |
+| quantity_purchased   |                |
+| user_flagged_barcode |                | (barcode)  -----> (logical relationship, ideally one product only have one barcode)
+| user_flagged_new_item|                |
+| user_flagged_price   |                |
+| user_flagged_quantity|                |
++----------------------+                |
+          |                             |
+          | (brandcode)  -----> (logical relationship, ideally one brand only have one bandcode)
+          v                             |
++----------------------+                |
+|        brands        |                |
++----------------------+                |
+| brandcode (PK)       |                |
+| category             |                |
+| categoryCode         |                |
+| name                 |                |
+| topBrand             |                |
++----------------------+                |
+          |                             |
+          | (barcode)  -----> (logical relationship, ideally one product only have one barcode) 1: N
+          v                             |
++----------------------+                |
+|      products        |                |
++----------------------+                |
+| barcode (PK)         |                |
+| brandcode (FK)       |                |
+| cpg                  |  <--------------
+| product_name         |
+| description          |
++----------------------+
