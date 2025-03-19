@@ -13,7 +13,8 @@ CREATE TABLE brands
 );
 
 -- Table: products
-CREATE TABLE products (
+CREATE TABLE products
+(
     barcode             VARCHAR(500) PRIMARY KEY,   -- Primary key
     brandCode           VARCHAR(50) REFERENCES brands(brandCode)
     product_name        VARCHAR(500),
